@@ -1,7 +1,8 @@
 export class Customer{
   constructor(public userName: string, public products: object[]){}
 
-  // addProduct(selectedProduct){
-  //   this.products.push(selectedProduct);
-  // }
+  addProduct(selectedProduct){
+    this.products.push(selectedProduct);
+    console.log(this.products)
+  }
 }
