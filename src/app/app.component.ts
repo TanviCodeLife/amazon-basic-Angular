@@ -11,6 +11,8 @@ export class AppComponent {
   selectedUser = null;
   currentKeg = null;
   kegForm = false;
+  //kegEditForm = false;
+  currentEdit = null;
   allKegs: Keg[] = [
     new Keg("IPA", "pHreim", 6, .065, 124),
     new Keg("Pilsner", "Bouy", 5, .045, 240),
@@ -18,23 +20,18 @@ export class AppComponent {
   ];
 
 
-  // user = new Customer("Tanvi", []);
-
   createKeg(kegName, brand, price, alchoholContent, quantity){
     this.allKegs.push(new Keg(kegName, brand, price, alchoholContent, quantity));
+    this.kegForm = false;
   }
 
-  // loginUser(name, password){
-  //   console.log(name);
-  //   console.log(password);
-  //   for(let user of this.allUsers){
-  //     if(user.userName.includes(name) && user.userPassword.includes(password)){
-  //       this.selectedUser = user;
-  //     }
-  //   }
-  // }
+  editKeg(addQuantity){
+    console.log(addQuantity);
+    this.currentEdit.quantity += addQuantity;
+  }
 
   displayKeg(keg){
+    this.currentEdit = null;
     this.currentKeg = keg;
   }
 
@@ -44,5 +41,11 @@ export class AppComponent {
 
   hideKegForm(){
     this.kegForm = false;
+  }
+
+  showEditForm(keg){
+    this.currentKeg = null;
+    //this.kegEditForm = true;
+    this.currentEdit = keg;
   }
 }

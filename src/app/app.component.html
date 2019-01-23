@@ -15,11 +15,22 @@
 <div class="container">
     <h5>Choose Kegs(employee):</h5>
     <ul>
-      <li (click)="displayKeg(keg)" *ngFor="let keg of allKegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) (${{keg.price.toFixed(2)}}) <br>
+      <li *ngFor="let keg of allKegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) (${{keg.price.toFixed(2)}}) <br>
         ${{keg.price}} <br>
         {{keg.quantity}} pints left! <br><br>
-      </li>
+      <button (click)="displayKeg(keg)">Sell Pint</button>
+      <button (click)="showEditForm(keg)">Edit Keg</button></li>
     </ul>
+<!--KegEditForm  -->
+    <div *ngIf="currentEdit">
+      <form>
+        <input [(ngModel)]="quantity" type="number" name="quantity" placeholder="Quantity">
+
+        <button (click)="editKeg(quantity)" type="button">Change </button>
+      </form>
+    </div>
+
+<!-- Sell Pint Form -->
 
     <div *ngIf="currentKeg">
       <input min="1" [(ngModel)]="quantity" type="number" name="quantity">
@@ -29,6 +40,8 @@
       </div>
     </div>
 
+
+<!-- Create New Keg Form -->
     <button (click)="showKegForm()" type="button" name="button">New Keg</button>
 
     <div *ngIf="kegForm">

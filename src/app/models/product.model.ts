@@ -19,12 +19,7 @@ export class Keg{
       }
     }
 
-    
 
-    editKeg(selectedKeg, addQuantity){
-      for(let keg of this.kegs){
-        if(keg.kegName.includes(selectedKeg.kegName)){
-          keg.quantity += addQuantity;
-          console.log("Already there");
-        }
+
+    
 }
