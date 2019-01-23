@@ -18,4 +18,13 @@ export class Keg{
       // setTimeout(this.message = null, 5000);
       }
     }
+
+    
+
+    editKeg(selectedKeg, addQuantity){
+      for(let keg of this.kegs){
+        if(keg.kegName.includes(selectedKeg.kegName)){
+          keg.quantity += addQuantity;
+          console.log("Already there");
+        }
 }

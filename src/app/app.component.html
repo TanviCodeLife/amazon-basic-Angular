@@ -1,28 +1,49 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<h1 *ngIf="selectedUser">Hello {{selectedUser.userName}}</h1>
-<form>
-<input [(ngModel)]="name" type="name" name="userName" placeholder="User Name">
-<input [(ngModel)]="password" type="text" name="userPassword" placeholder="Password">
-<button (click)="createUser(name, password)" type="button">Register New User</button>
-<button (click)="loginUser(name, password)" type="button">Login!</button>
-</form>
+<!-- customer facing -->
+<div class="container">
+  <!-- list out current tapped kegs -->
+    <h5>Choose Kegs (customer):</h5>
+    <ul>
+      <li *ngFor="let keg of allKegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) (${{keg.price.toFixed(2)}}) <br>
+        ${{keg.price}} <br>
+        {{keg.quantity}} pints left! <br><br>
+      </li>
+    </ul>
+</div>
 
 
-<!-- <h4>{{user.userName}}</h4> -->
-<div *ngIf="selectedUser" class="">
-  <h5>Choose Kegs:</h5>
-  <ul>
-    <li (click)="displayKeg(keg)" *ngFor="let keg of kegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) (${{keg.price.toFixed(2)}}) <br>
-      ${{keg.price}} <br>
-      {{keg.quantity}} pints left! <br><br>
-    </li>
-  </ul>
+<!-- employee facing -->
+<div class="container">
+    <h5>Choose Kegs(employee):</h5>
+    <ul>
+      <li (click)="displayKeg(keg)" *ngFor="let keg of allKegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) (${{keg.price.toFixed(2)}}) <br>
+        ${{keg.price}} <br>
+        {{keg.quantity}} pints left! <br><br>
+      </li>
+    </ul>
 
-  <div *ngIf="currentKeg">
-    <input min="1" [(ngModel)]="quantity" type="number" name="quantity">
-    <button (click)="currentKeg.sellPint(quantity)">Sell Pint</button>
-    <div *ngIf="currentKeg.message">
-      {{currentKeg.message}}
+    <div *ngIf="currentKeg">
+      <input min="1" [(ngModel)]="quantity" type="number" name="quantity">
+      <button (click)="currentKeg.sellPint(quantity)">Sell Pint</button>
+      <div *ngIf="currentKeg.message">
+        {{currentKeg.message}}
+      </div>
     </div>
-  </div>
+
+    <button (click)="showKegForm()" type="button" name="button">New Keg</button>
+
+    <div *ngIf="kegForm">
+      <form>
+      <input [(ngModel)]="kegName" type="kegName" name="kegName" placeholder="Keg Name">
+
+      <input [(ngModel)]="brand" type="text" name="brand" placeholder="Brand">
+
+      <input [(ngModel)]="price" min="0" type="number" name="price" placeholder="Price">
+
+      <input [(ngModel)]="alchoholContent" type="number" name="alchoholContent" placeholder="Alcohol Content">
+
+        <input [(ngModel)]="quantity" type="number" name="quantity" placeholder="Quantity">
+
+      <button (click)="createKeg(kegName, brand, price, alchoholContent, quantity)" type="button">Creat new Keg</button>
+      </form>
+    </div>
 </div>
