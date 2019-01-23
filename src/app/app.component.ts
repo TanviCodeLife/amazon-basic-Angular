@@ -10,12 +10,13 @@ import { Customer } from './models/user.model';
 export class AppComponent {
   title = 'app';
   selectedUser = null;
+  currentProduct = null;
   allUsers: Customer[] = [];
 
   products: Product[] = [
-    new Product("Apples", 1.50),
-    new Product("Bananas", 0.50),
-    new Product("Oranges", 2.00)
+    new Product("Apples", 1.50, 0),
+    new Product("Bananas", 0.50, 0),
+    new Product("Oranges", 2.00, 0)
   ]
 
   // user = new Customer("Tanvi", []);
@@ -33,5 +34,9 @@ export class AppComponent {
         this.selectedUser = user;
       }
     }
+  }
+
+  displayProduct(product){
+    this.currentProduct = product;
   }
 }

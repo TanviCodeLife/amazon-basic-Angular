@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h1>Hello</h1>
+<h1 *ngIf="selectedUser">Hello {{selectedUser.userName}}</h1>
 <form>
 <input [(ngModel)]="name" type="name" name="userName" placeholder="User Name">
 <input [(ngModel)]="password" type="text" name="userPassword" placeholder="Password">
@@ -12,6 +12,12 @@
 <div *ngIf="selectedUser" class="">
   <h5>Choose Products:</h5>
   <ul>
-    <li *ngFor="let product of products">{{product.productName}} (${{product.price.toFixed(2)}}) <button (click)="selectedUser.addProduct(product)">Add to cart</button></li>
+    <li (click)="displayProduct(product)" *ngFor="let product of products"> {{product.productName}} (${{product.price.toFixed(2)}})
+    </li>
   </ul>
+
+  <div *ngIf="currentProduct">
+    <input [(ngModel)]="quantity" type="number" name="quantity">
+    <button (click)="selectedUser.addProduct(currentProduct, quantity)">Add to cart</button>
+  </div>
 </div>
