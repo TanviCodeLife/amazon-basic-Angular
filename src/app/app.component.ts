@@ -9,6 +9,7 @@ import { Customer } from './models/user.model';
 })
 export class AppComponent {
   title = 'app';
+  selectedUser = null;
 
   products: Product[] = [
     new Product("Apples", 1.50),
@@ -16,5 +17,6 @@ export class AppComponent {
     new Product("Oranges", 2.00)
   ]
 
-  customers: new Customer()
+  user = new Customer("Tanvi", []);
+
 }

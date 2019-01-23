@@ -1,6 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container">
-  Hello!
-    <label for="user">New User</label>
-    <input [(ngModel)]="username" type="text" name="user" placeholder="username">
-</div>
+<h1>Hello</h1>
+<h4>{{user.userName}}</h4>
+<h5>Choose Products:</h5>
+<ul>
+  <li *ngFor="let product of products">{{product.productName}}</li>
+</ul>
