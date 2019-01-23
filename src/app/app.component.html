@@ -10,14 +10,19 @@
 
 <!-- <h4>{{user.userName}}</h4> -->
 <div *ngIf="selectedUser" class="">
-  <h5>Choose Products:</h5>
+  <h5>Choose Kegs:</h5>
   <ul>
-    <li (click)="displayProduct(product)" *ngFor="let product of products"> {{product.productName}} (${{product.price.toFixed(2)}})
+    <li (click)="displayKeg(keg)" *ngFor="let keg of kegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) (${{keg.price.toFixed(2)}}) <br>
+      ${{keg.price}} <br>
+      {{keg.quantity}} pints left! <br><br>
     </li>
   </ul>
 
-  <div *ngIf="currentProduct">
-    <input [(ngModel)]="quantity" type="number" name="quantity">
-    <button (click)="selectedUser.addProduct(currentProduct, quantity)">Add to cart</button>
+  <div *ngIf="currentKeg">
+    <input min="1" [(ngModel)]="quantity" type="number" name="quantity">
+    <button (click)="currentKeg.sellPint(quantity)">Sell Pint</button>
+    <div *ngIf="currentKeg.message">
+      {{currentKeg.message}}
+    </div>
   </div>
 </div>

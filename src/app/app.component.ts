@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from './models/product.model';
+import { Keg } from './models/product.model';
 import { Customer } from './models/user.model';
 
 @Component({
@@ -10,13 +10,13 @@ import { Customer } from './models/user.model';
 export class AppComponent {
   title = 'app';
   selectedUser = null;
-  currentProduct = null;
+  currentKeg = null;
   allUsers: Customer[] = [];
 
-  products: Product[] = [
-    new Product("Apples", 1.50, 0),
-    new Product("Bananas", 0.50, 0),
-    new Product("Oranges", 2.00, 0)
+  kegs: Keg[] = [
+    new Keg("IPA", "pHreim", 6, .065, 124),
+    new Keg("Pilsner", "Bouy", 5, .045, 240),
+    new Keg("Hefeweizen", "Widmer", 5.5, .05, 300)
   ]
 
   // user = new Customer("Tanvi", []);
@@ -36,7 +36,7 @@ export class AppComponent {
     }
   }
 
-  displayProduct(product){
-    this.currentProduct = product;
+  displayKeg(keg){
+    this.currentKeg = keg;
   }
 }
