@@ -1,7 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h1>Hello</h1>
-<h4>{{user.userName}}</h4>
-<h5>Choose Products:</h5>
-<ul>
-  <li *ngFor="let product of products">{{product.productName}} (${{product.price.toFixed(2)}}) <button (click)="user.addProduct(product)">Add to cart</button></li>
-</ul>
+<form>
+<input [(ngModel)]="name" type="name" name="userName" placeholder="User Name">
+<input [(ngModel)]="password" type="text" name="userPassword" placeholder="Password">
+<button (click)="createUser(name, password)" type="button">Register New User</button>
+<button (click)="loginUser(name, password)" type="button">Login!</button>
+</form>
+
+
+<!-- <h4>{{user.userName}}</h4> -->
+<div *ngIf="selectedUser" class="">
+  <h5>Choose Products:</h5>
+  <ul>
+    <li *ngFor="let product of products">{{product.productName}} (${{product.price.toFixed(2)}}) <button (click)="selectedUser.addProduct(product)">Add to cart</button></li>
+  </ul>
+</div>

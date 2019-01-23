@@ -10,6 +10,7 @@ import { Customer } from './models/user.model';
 export class AppComponent {
   title = 'app';
   selectedUser = null;
+  allUsers: Customer[] = [];
 
   products: Product[] = [
     new Product("Apples", 1.50),
@@ -17,6 +18,20 @@ export class AppComponent {
     new Product("Oranges", 2.00)
   ]
 
-  user = new Customer("Tanvi", []);
+  // user = new Customer("Tanvi", []);
 
+  createUser(name, password){
+    this.allUsers.push(new Customer(name, password, []));
+    console.log(this.allUsers)
+  }
+
+  loginUser(name, password){
+    console.log(name);
+    console.log(password);
+    for(let user of this.allUsers){
+      if(user.userName.includes(name) && user.userPassword.includes(password)){
+        this.selectedUser = user;
+      }
+    }
+  }
 }
