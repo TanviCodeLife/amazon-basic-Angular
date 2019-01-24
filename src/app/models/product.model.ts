@@ -14,12 +14,7 @@ export class Keg{
       }
       else {
         console.log("out of beer");
-      this.message = "Not enough left to sell that much!";
-      // setTimeout(this.message = null, 5000);
+        this.message = "Not enough left to sell that much!";
       }
     }
-
-
-
-    
-}
+  }

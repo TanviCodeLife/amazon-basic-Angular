@@ -11,9 +11,8 @@ export class AppComponent {
   selectedUser = null;
   currentKeg = null;
   kegForm = false;
-  //kegEditForm = false;
   currentEdit = null;
-  allKegs: Keg[] = [
+  masterAllKegs: Keg[] = [
     new Keg("IPA", "pHreim", 6, .065, 124),
     new Keg("Pilsner", "Bouy", 5, .045, 240),
     new Keg("Hefeweizen", "Widmer", 5.5, .05, 300)
@@ -21,7 +20,7 @@ export class AppComponent {
 
 
   createKeg(kegName, brand, price, alchoholContent, quantity){
-    this.allKegs.push(new Keg(kegName, brand, price, alchoholContent, quantity));
+    this.masterAllKegs.push(new Keg(kegName, brand, price, alchoholContent, quantity));
     this.kegForm = false;
   }
 
@@ -45,7 +44,6 @@ export class AppComponent {
 
   showEditForm(keg){
     this.currentKeg = null;
-    //this.kegEditForm = true;
     this.currentEdit = keg;
   }
 }

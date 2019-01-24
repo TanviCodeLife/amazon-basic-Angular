@@ -1,0 +1,10 @@
+<div class="container">
+  <!-- list out current tapped kegs -->
+    <h5>Choose Kegs (customer):</h5>
+    <ul>
+      <li *ngFor="let keg of childAllKegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) (${{keg.price.toFixed(2)}}) <br>
+        ${{keg.price}} <br>
+        {{keg.quantity}} pints left! <br><br>
+      </li>
+    </ul>
+</div>
