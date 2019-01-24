@@ -1,45 +1,13 @@
-<app-customer [childAllKegs]="masterAllKegs"></app-customer>
-<app-employee [childAllKegs]="masterAllKegs" (clickSender)="showEditForm($event)"></app-employee>
+<app-list [childAllKegs]="masterAllKegs" (clickSender)="showEditForm($event)" (sellPintSender)="sellPint($event)"></app-list>
 
 <!-- employee facing -->
 <div class="container">
 
 
 <!--KegEditForm  -->
-    <div *ngIf="currentEdit">
-      <form>
-        <input [(ngModel)]="quantity" type="number" name="quantity" placeholder="Quantity">
-
-        <button (click)="editKeg(quantity)" type="button">Change </button>
-      </form>
-    </div>
-
-<!-- Sell Pint Form -->
-    <div *ngIf="currentKeg">
-      <input min="1" [(ngModel)]="quantity" type="number" name="quantity">
-      <button (click)="currentKeg.sellPint(quantity)">Sell Pint</button>
-      <div *ngIf="currentKeg.message">
-        {{currentKeg.message}}
-      </div>
-    </div>
-
+<app-edit *ngIf="currentEdit" [childCurrentEdit]="currentEdit" (clickSender)="finishedEditing()"></app-edit>
 
 <!-- Create New Keg Form -->
     <button (click)="showKegForm()" type="button" name="button">New Keg</button>
-
-    <div *ngIf="kegForm">
-      <form>
-      <input [(ngModel)]="kegName" type="kegName" name="kegName" placeholder="Keg Name">
-
-      <input [(ngModel)]="brand" type="text" name="brand" placeholder="Brand">
-
-      <input [(ngModel)]="price" min="0" type="number" name="price" placeholder="Price">
-
-      <input [(ngModel)]="alchoholContent" type="number" name="alchoholContent" placeholder="Alcohol Content">
-
-        <input [(ngModel)]="quantity" type="number" name="quantity" placeholder="Quantity">
-
-      <button (click)="createKeg(kegName, brand, price, alchoholContent, quantity)" type="button">Creat new Keg</button>
-      </form>
-    </div>
+    <app-add *ngIf="kegForm" (doneAdding)="createKeg($event)"></app-add>
 </div>

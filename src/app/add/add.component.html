@@ -1,3 +1,15 @@
-<p>
-  add works!
-</p>
+<div>
+  <form>
+    <input #newKegName type="kegName" name="kegName" placeholder="Keg Name">
+
+    <input #newBrand type="text" name="brand" placeholder="Brand">
+
+    <input #newPrice min="0" type="number" name="price" placeholder="Price">
+
+    <input #newAlchoholContent type="number" name="alchoholContent" placeholder="Alcohol Content">
+
+    <input #newQuantity type="number" name="quantity" placeholder="Quantity">
+
+    <button (click)="createKeg(newKegName.value, newBrand.value, newPrice.value, newAlchoholContent.value, newQuantity.value)" type="button">Creat new Keg</button>
+  </form>
+</div>

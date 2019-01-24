@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Keg } from '../models/product.model';
 
 @Component({
   selector: 'app-edit',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  @Input() childCurrentEdit: Keg;
+  @Output() clickSender = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  finishedEditing(){
+    this.clickSender.emit();
   }
 
 }

@@ -1,3 +1,13 @@
-<p>
-  edit works!
-</p>
+<div>
+  <label for="name">Update Name</label>
+  <input [(ngModel)]="childCurrentEdit.kegName" name="name">
+  <label for="brand">Update Brand</label>
+  <input [(ngModel)]="childCurrentEdit.brand" name="brand">
+  <label for="price">Update Price</label>
+  <input [(ngModel)]="childCurrentEdit.price" name="price" type="number">
+  <label for="alchoholContent">Update Alchohol Content</label>
+  <input [(ngModel)]="childCurrentEdit.alchoholContent" name="alchoholContent">
+  <label for="newQuantity">Update Quantity</label>
+  <input [(ngModel)]="childCurrentEdit.quantity" type="number" name="newQuantity" placeholder="newQuantity">
+</div>
+<button (click)="finishedEditing()">Change </button>

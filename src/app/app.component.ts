@@ -13,20 +13,19 @@ export class AppComponent {
   kegForm = false;
   currentEdit = null;
   masterAllKegs: Keg[] = [
-    new Keg("IPA", "pHreim", 6, .065, 124),
+    new Keg("IPA", "pHreim", 6, .065, 5),
     new Keg("Pilsner", "Bouy", 5, .045, 240),
     new Keg("Hefeweizen", "Widmer", 5.5, .05, 300)
   ];
 
 
-  createKeg(kegName, brand, price, alchoholContent, quantity){
-    this.masterAllKegs.push(new Keg(kegName, brand, price, alchoholContent, quantity));
+  createKeg(newKeg: Keg){
+    this.masterAllKegs.push(newKeg);
     this.kegForm = false;
   }
 
-  editKeg(addQuantity){
-    console.log(addQuantity);
-    this.currentEdit.quantity += addQuantity;
+  finishedEditing(){
+    this.currentEdit = null;
   }
 
   displayKeg(keg){
@@ -46,4 +45,9 @@ export class AppComponent {
     this.currentKeg = null;
     this.currentEdit = keg;
   }
+
+  sellPint(keg: Keg) {
+    (keg.quantity > 0) ? keg.quantity-- : keg.message="out of beer";
+  }
+
 }

@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms'
 
 
 import { AppComponent } from './app.component';
-import { CustomerComponent } from './customer/customer.component';
-import { EmployeeComponent } from './employee/employee.component';
+import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { SellComponent } from './sell/sell.component';
@@ -14,8 +13,7 @@ import { SellComponent } from './sell/sell.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent,
-    EmployeeComponent,
+    ListComponent,
     AddComponent,
     EditComponent,
     SellComponent

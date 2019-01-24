@@ -1,0 +1,12 @@
+<h5>Choose Kegs(employee):</h5>
+<ul>
+  <li *ngFor="let keg of childAllKegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) <br>
+    ${{keg.price.toFixed(2)}}  <br>
+    {{keg.quantity}} pints left! <br>
+    <div *ngIf="keg.message">
+      {{keg.message}}
+    </div><br>
+  <button (click)="sellPint(keg)">Sell Pint</button>
+  <button (click)="showEditForm(keg)">Edit Keg</button>
+</li>
+</ul>
