@@ -11,6 +11,8 @@ export class ListComponent {
   @Output() clickSender = new EventEmitter();
   @Output() sellPintSender = new EventEmitter();
 
+  filterBySoldout: string = "allKegs";
+
   showEditForm(kegToEdit: Keg){
     this.clickSender.emit(kegToEdit);
   }
@@ -18,5 +20,15 @@ export class ListComponent {
   sellPint(keg) {
     this.sellPintSender.emit(keg);
   }
-
+  onChange(optionFromMenu){
+    this.filterBySoldout = optionFromMenu;
   }
+
+  defineClass(keg) {
+    if (keg.quantity === 0) {
+      return "bg-danger";
+    } else {
+      return "bg-info";
+    }
+  }
+}

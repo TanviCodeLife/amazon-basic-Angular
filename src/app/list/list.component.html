@@ -1,12 +1,26 @@
 <h5>Choose Kegs(employee):</h5>
+
+<select (change)="onChange($event.target.value)">
+  <option value="allKegs">All Kegs</option>
+  <option value="soldoutKegs">Soldout Kegs</option>
+</select>
+
 <ul>
-  <li *ngFor="let keg of childAllKegs"> {{keg.kegName}} - {{keg.brand}} ({{keg.alchoholContent}}) <br>
-    ${{keg.price.toFixed(2)}}  <br>
-    {{keg.quantity}} pints left! <br>
-    <div *ngIf="keg.message">
-      {{keg.message}}
-    </div><br>
-  <button (click)="sellPint(keg)">Sell Pint</button>
-  <button (click)="showEditForm(keg)">Edit Keg</button>
-</li>
+  <li [class]="defineClass(keg)" *ngFor="let keg of childAllKegs | soldout:filterBySoldout">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{keg.kegName}}</h5>
+        <p class="card-text">
+          {{keg.brand}} ({{keg.alchoholContent}}) <br>
+          ${{keg.price.toFixed(2)}}  <br>
+          {{keg.quantity}} pints left! <br>
+          <span *ngIf="keg.message">
+            {{keg.message}}
+          </span><br>
+        </p>
+        <button (click)="sellPint(keg)">Sell Pint</button>
+        <button (click)="showEditForm(keg)">Edit Keg</button>
+      </div>
+    </div>
+  </li>
 </ul>

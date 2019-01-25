@@ -7,7 +7,7 @@ import { Keg } from './models/product.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Taproom';
   selectedUser = null;
   currentKeg = null;
   kegForm = false;
@@ -15,7 +15,9 @@ export class AppComponent {
   masterAllKegs: Keg[] = [
     new Keg("IPA", "pHreim", 6, .065, 5),
     new Keg("Pilsner", "Bouy", 5, .045, 240),
-    new Keg("Hefeweizen", "Widmer", 5.5, .05, 300)
+    new Keg("Hefeweizen", "Widmer", 5.5, .05, 300),
+    new Keg("Another", "Another", 5.5, .05, 0),
+    new Keg("Another2", "Another2", 5.5, .05, 0),
   ];
 
 
